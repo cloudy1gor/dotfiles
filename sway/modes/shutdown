@@ -1,0 +1,37 @@
+# <span>(<b>h</b>)</span>hibernate \
+# <span>(<b>u</b>)</span>suspend \
+
+set $mode_shutdown "\
+<span></span>  \
+<span> \
+<span>(<b>L</b>)</span>ock \
+<span>(<b>O</b>)</span>ut \
+<span>(<b>R</b>)</span>eboot \
+<span>(<b>S</b>)</span>hutdown \
+</span>"
+
+mode --pango_markup $mode_shutdown {
+    # lock
+    bindsym l mode "default", exec $locking
+
+    # logout
+    bindsym o exec loginctl terminate-user $USER
+
+    # suspend
+    bindsym u mode "default", exec systemctl suspend
+
+    # hibernate
+    bindsym h mode "default", exec systemctl hibernate
+
+    # shutdown
+    bindsym s exec systemctl poweroff
+
+    # reboot
+    bindsym r exec systemctl reboot
+
+    # Return to default mode.
+    bindsym Escape mode "default"
+}
+
+## Launch // Exit Menu ##
+bindsym $mod+Shift+e mode $mode_shutdown

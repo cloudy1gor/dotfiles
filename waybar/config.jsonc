@@ -17,12 +17,9 @@
     "memory",
     "temperature",
     "sway/workspaces"
-    // "custom/scratchpad"
   ],
   "modules-center": ["sway/mode", "sway/window"],
   "modules-right": [
-    // "custom/powermenu",
-    // "custom/cpu_speed",
     "tray",
     "bluetooth",
     "network",
@@ -49,7 +46,7 @@
     },
     // "format": "{capacity}% {icon}",
     "format": "<span font='Font Awesome 5 Free 11'>{icon}</span> {capacity}%",
-    "format-charging": "<span font='Font Awesome 5 Free 11'>{icon}</span> {capacity}%",
+    "format-charging": " {capacity}%",
     "format-plugged": "<span font='Font Awesome 5 Free 11'>{icon}</span> {capacity}% \uf1e6",
     "format-alt": "{time} {icon}",
     // "format-good": "", // An empty format will hide the module
@@ -143,7 +140,7 @@
   },
 
   "backlight": {
-    "format": "{icon}  {percent}%",
+    "format": "{icon} {percent}%",
     "format-icons": ["", "", ""],
     "on-scroll-up": "light -A 1",
     "on-scroll-down": "light -U 1"
@@ -159,7 +156,10 @@
     "format-source-muted": " ",
     "format-icons": {
       "headphone": "",
+      "hands-free": "",
       "headset": "",
+      "phone": "",
+      "portable": "",
       "default": ["奄", "奔", "墳"]
     },
     "tooltip-format": "{icon} {volume}% {format_source}",
@@ -213,26 +213,6 @@
     "on-click": "swaymsg input $(swaymsg -t get_inputs --raw | jq '[.[] | select(.type == \"keyboard\")][0] | .identifier') xkb_switch_layout next"
   },
 
-  // "custom/cpu_speed": {
-  //   "interval": 10,
-  //   "return-type": "json",
-  //   "exec": "~/.config/waybar/modules/cpu_speed.sh",
-  //   "format": "<span font='Font Awesome 5 Free 11'>{icon}</span>  {}",
-  //   "format-icons": [""],
-  //   "escape": true,
-  //   "on-click": "kitty -e htop"
-  // },
-
-  // "custom/powermenu": {
-  //   "return-type": "json",
-  //   "exec": "~/.config/waybar/modules/powermenu.sh",
-  //   "format": "<span font='Font Awesome 5 Free 9'>{icon}</span>  {}",
-  //   "format-icons": [""],
-  //   "interval": 3600,
-  //   "escape": true,
-  //   "on-click": "~/sway/scripts/wofi-power.sh"
-  // },
-
   "custom/scratchpad": {
     "interval": "once",
     "return-type": "json",
@@ -252,15 +232,15 @@
     "return-type": "json",
     "format": "{icon}",
     "format-icons": {
-      "on": "",
-      "off": ""
+      "on": "ﯦ",
+      "off": "ﯧ"
     },
-    // "exec": "../../../../usr/share/sway/scripts/sunset.sh",
-    "exec": "/home/clo/.config/sway/scripts/sunset.sh",
-    // "on-click": "../../../../usr/share/sway/scripts/sunset.sh toggle; pkill -RTMIN+6 waybar",
-    "on-click": "/home/clo/.config/sway/scripts/sunset.sh toggle; pkill -RTMIN+6 waybar",
-    // "exec-if": "../../../../usr/share/sway/scripts/sunset.sh check",
-    "exec-if": "/home/clo/.config/sway/scripts/sunset.sh check",
+    "exec": "../../../../usr/share/sway/scripts/sunset.sh",
+    // "exec": "./modules/sunset.sh",
+    "on-click": "../../../../usr/share/sway/scripts/sunset.sh toggle; pkill -RTMIN+6 waybar",
+    // "on-click": "./modules/sunset.sh toggle; pkill -RTMIN+6 waybar",
+    "exec-if": "../../../../usr/share/sway/scripts/sunset.sh check",
+    // "exec-if": "./modules/sunset.sh check",
     "signal": 6
   },
 

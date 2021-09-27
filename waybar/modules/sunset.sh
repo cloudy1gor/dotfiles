@@ -58,4 +58,3 @@ else
 fi
 
 printf '{"alt":"%s"}\n' "$class"
-

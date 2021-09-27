@@ -1,9 +1,5 @@
 configuration {
   modi: "drun,run,ssh";
-  terminal: "kitty";
   show-icons: true;
-  icon-theme: "Tela circle dark";
-  display-drun: "";
-  drun-display-format: "{name}";
   theme: "~/.config/rofi/themes/style_1.rasi";
 }

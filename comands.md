@@ -1,43 +1,43 @@
-## Arch (Manjaro Sway) linux basic comands after install
+# Arch (Manjaro Sway) linux basic comands after install
 
-sudo -Syy
+- sudo -Syy
 
-sudo -Syu
+- sudo -Syu
 
-sudo pacman -S git
+- sudo pacman -S git
 
-pacman -S --needed git base-devel
+- pacman -S --needed git base-devel
 
-git clone https://aur.archlinux.org/yay.git
+- git clone https://aur.archlinux.org/yay.git
 
-cd yay
+- cd yay
 
-makepkg -si
+- makepkg -si
 
-sudo pacman -S kitty fish thunar ranger neofetch neovim
+- sudo pacman -S kitty fish thunar ranger neofetch neovim
 
-chsh -s /usr/bin/fish
+- chsh -s /usr/bin/fish
 
-git clone https://aur.archlinux.org/visual-studio-code-bin.git
+- git clone https://aur.archlinux.org/visual-studio-code-bin.git
 
-cd visual-studio-code-bin/
+- cd visual-studio-code-bin/
 
-makepkg -si
+- makepkg -si
 
-git clone https://aur.archlinux.org/sublime-text-4.git
+- git clone https://aur.archlinux.org/sublime-text-4.git
 
-cd sublime-text-4/
+- cd sublime-text-4/
 
-makepkg -si
+- makepkg -si
 
-git clone https://aur.archlinux.org/google-chrome.git
+- git clone https://aur.archlinux.org/google-chrome.git
 
-cd google-chrome/
+- cd google-chrome/
 
-makepkg -si
+- makepkg -si
 
-sudo pacman -S telegram-desktop discord flameshot vlc variety
+- sudo pacman -S telegram-desktop discord flameshot vlc variety
 
-sudo pacman -S nodejs npm yarn
+- sudo pacman -S nodejs npm yarn
 
-sudo npm install --global typescript
+- sudo npm install --global typescript

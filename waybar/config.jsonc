@@ -1,0 +1,305 @@
+{
+  //   "include": [
+  //     "../../../../usr/share/sway/templates/waybar/config.jsonc"
+  // ],
+
+  "position": "top",
+  "layer": "bottom",
+  "height": 20,
+  "margin-top": 0,
+  "margin-bottom": 0,
+  "margin-right": 0,
+  "margin-left": 0,
+
+  "modules-left": [
+    // "custom/menu",
+    "cpu",
+    "memory",
+    "temperature",
+    "sway/workspaces"
+    // "custom/scratchpad"
+  ],
+  "modules-center": ["sway/mode", "sway/window"],
+  "modules-right": [
+    // "custom/powermenu",
+    // "custom/cpu_speed",
+    "tray",
+    "bluetooth",
+    "network",
+    "sway/language",
+    // "idle_inhibitor",
+    // "pulseaudio",
+    "backlight",
+    "custom/playerctl",
+    "custom/sunset",
+    "custom/pacman",
+    "battery",
+    "clock"
+  ],
+
+  // -------------------------------------------------------------------------
+  // Modules
+  // -------------------------------------------------------------------------
+
+  "battery": {
+    "states": {
+      // "good": 90,
+      "warning": 20,
+      "critical": 10
+    },
+    // "format": "{capacity}% {icon}",
+    "format": "<span font='Font Awesome 5 Free 11'>{icon}</span> {capacity}%",
+    "format-charging": "<span font='Font Awesome 5 Free 11'>{icon}</span> {capacity}%",
+    "format-plugged": "<span font='Font Awesome 5 Free 11'>{icon}</span> {capacity}% \uf1e6",
+    "format-alt": "{time} {icon}",
+    // "format-good": "", // An empty format will hide the module
+    // "format-full": "",
+    "format-icons": ["", "", "", "", ""]
+  },
+  "battery#bat2": {
+    "bat": "BAT1"
+  },
+
+  "clock": {
+    "timezone": "Europe/Kiev",
+    "interval": 60,
+    "format": "神 {:%a %d %b %H:%M}",
+    "tooltip": true,
+    "tooltip-format": "<big>{:%B %Y}</big>\n<tt>{calendar}</tt>",
+    "on-click": "swaymsg exec \\$calendar"
+  },
+
+  "cpu": {
+    "interval": 5,
+    "format": "﬙ {usage}%",
+    "states": {
+      "warning": 70,
+      "critical": 90
+    },
+    "on-click": "swaymsg exec \\$term_float htop"
+  },
+
+  "memory": {
+    "interval": 5,
+    "format": " {}%",
+    "states": {
+      "warning": 70,
+      "critical": 90
+    },
+    "on-click": "swaymsg exec \\$term_float htop"
+  },
+
+  "network": {
+    "interval": 5,
+    "format-wifi": "<span font='Font Awesome 5 Free 10'></span>",
+    "format-ethernet": "",
+    "format-disconnected": "睊",
+    "tooltip-format": "{ifname} ({essid}): {ipaddr}",
+    "on-click": "swaymsg exec \\$term nmtui"
+  },
+
+  "sway/mode": {
+    "format": " {}",
+    "tooltip": false
+  },
+
+  "sway/window": {
+    "max-length": 32,
+    "rewrite": {
+      "(.*) — Mozilla Firefox": "  $1",
+      "(.*) GIMP": " $0",
+      "(.*)Steam": "  Steam",
+      "kitty": " $0",
+      "(.*).pdf": " $1.pdf",
+      "(.*).epub": "龎 1.epub",
+      "(.*).djvu": " $1.djvu",
+      "(.*).mobi": "龎 $1.mobi"
+    }
+  },
+
+  "sway/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": false,
+    "format": "{name}"
+    // "format-icons": {
+    // 	"1": "",
+    // 	"2": "",
+    // 	"3": "",
+    // 	"4": "",
+    // 	"5": "",
+    // 	"6": "",
+    // 	"urgent": "",
+    // 	"focused": "",
+    // 	"default": ""
+    // }
+  },
+
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "零",
+      "deactivated": "鈴"
+    }
+  },
+
+  "backlight": {
+    "format": "{icon}  {percent}%",
+    "format-icons": ["", "", ""],
+    "on-scroll-up": "light -A 1",
+    "on-scroll-down": "light -U 1"
+  },
+
+  "pulseaudio": {
+    "scroll-step": 5,
+    "format": "{icon} {volume}%{format_source}",
+    "format-bluetooth": "{icon} {volume}%  {format_source}",
+    "format-bluetooth-muted": " {icon}  {format_source}",
+    "format-muted": "婢 {format_source}",
+    "format-source": " {volume}%",
+    "format-source-muted": " ",
+    "format-icons": {
+      "headphone": "",
+      "headset": "",
+      "default": ["奄", "奔", "墳"]
+    },
+    "tooltip-format": "{icon} {volume}% {format_source}",
+    "on-click": "swaymsg exec \\$pulseaudio"
+  },
+
+  "temperature": {
+    "critical-threshold": 90,
+    "interval": 2,
+    "format": "{icon} {temperatureC}°C",
+    "format-icons": ["", "", "", "", ""],
+    "tooltip": false,
+    "on-click": "swaymsg exec \"\\$term_float watch sensors\""
+  },
+
+  "tray": {
+    "icon-size": 20,
+    "spacing": 5
+  },
+
+  "custom/pacman": {
+    "format": " {}",
+    "interval": 3600,
+    "exec-if": "[ $(pamac checkupdates -q | wc -l) -gt 0 ]",
+    "exec": "pamac checkupdates -q | wc -l",
+    "on-click": "pamac-manager --updates; pkill -RTMIN+4 waybar",
+    "signal": 4
+  },
+
+  "custom/menu": {
+    "format": "",
+    "on-click": "swaymsg exec \\$menu",
+    "tooltip": false
+  },
+
+  "bluetooth": {
+    "format": "{icon}",
+    "interval": 30,
+    "format-icons": {
+      "enabled": "",
+      "disabled": ""
+    },
+    "on-click": "blueberry",
+    "tooltip-format": "{}"
+  },
+
+  "sway/language": {
+    "format": " {}",
+    "min-length": 5,
+    "tooltip": false,
+    "on-click": "swaymsg input $(swaymsg -t get_inputs --raw | jq '[.[] | select(.type == \"keyboard\")][0] | .identifier') xkb_switch_layout next"
+  },
+
+  // "custom/cpu_speed": {
+  //   "interval": 10,
+  //   "return-type": "json",
+  //   "exec": "~/.config/waybar/modules/cpu_speed.sh",
+  //   "format": "<span font='Font Awesome 5 Free 11'>{icon}</span>  {}",
+  //   "format-icons": [""],
+  //   "escape": true,
+  //   "on-click": "kitty -e htop"
+  // },
+
+  // "custom/powermenu": {
+  //   "return-type": "json",
+  //   "exec": "~/.config/waybar/modules/powermenu.sh",
+  //   "format": "<span font='Font Awesome 5 Free 9'>{icon}</span>  {}",
+  //   "format-icons": [""],
+  //   "interval": 3600,
+  //   "escape": true,
+  //   "on-click": "~/sway/scripts/wofi-power.sh"
+  // },
+
+  "custom/scratchpad": {
+    "interval": "once",
+    "return-type": "json",
+    "format": "{icon}",
+    "format-icons": {
+      "one": "类",
+      "many": "缾"
+    },
+    "exec": "/bin/sh /usr/share/sway/scripts/scratchpad.sh",
+    "on-click": "swaymsg 'scratchpad show'",
+    "signal": 7
+  },
+
+  "custom/sunset": {
+    "interval": "once",
+    "tooltip": false,
+    "return-type": "json",
+    "format": "{icon}",
+    "format-icons": {
+      "on": "",
+      "off": ""
+    },
+    // "exec": "../../../../usr/share/sway/scripts/sunset.sh",
+    "exec": "/home/clo/.config/sway/scripts/sunset.sh",
+    // "on-click": "../../../../usr/share/sway/scripts/sunset.sh toggle; pkill -RTMIN+6 waybar",
+    "on-click": "/home/clo/.config/sway/scripts/sunset.sh toggle; pkill -RTMIN+6 waybar",
+    // "exec-if": "../../../../usr/share/sway/scripts/sunset.sh check",
+    "exec-if": "/home/clo/.config/sway/scripts/sunset.sh check",
+    "signal": 6
+  },
+
+  "custom/wf-recorder": {
+    "interval": "once",
+    "return-type": "json",
+    "format": "{}",
+    "tooltip-format": "{tooltip}",
+    "exec": "echo '{\"class\": \"recording\",\"text\":\"雷\",\"tooltip\":\"press $mod+Esc to stop recording\"}'",
+    "exec-if": "pgrep wf-recorder",
+    "on-click": "killall -s SIGINT wf-recorder",
+    "signal": 8
+  },
+
+  "custom/github": {
+    "interval": 300,
+    "tooltip": false,
+    "return-type": "json",
+    "format": " {}",
+    "exec": "gh api '/notifications' -q '{ text: length }' | cat -",
+    "exec-if": "command -v gh >/dev/null && gh auth status 2>&1 | grep -q -m 1 'Logged in' && gh api '/notifications' -q 'length' | grep -q -m 1 '0' ; test $? -eq 1",
+    "on-click": "xdg-open https://github.com/notifications && sleep 30 && pkill -RTMIN+4 waybar",
+    "signal": 4
+  },
+
+  "custom/playerctl": {
+    "interval": "once",
+    "tooltip": true,
+    "return-type": "json",
+    "format": "{icon}",
+    "format-icons": {
+      "Playing": "奈",
+      "Paused": ""
+    },
+    "exec": "playerctl metadata --format '{\"alt\": \"{{status}}\", \"tooltip\": \"{{playerName}}:  {{markup_escape(title)}} - {{markup_escape(artist)}}\" }'",
+    "on-click": "playerctl play-pause; pkill -RTMIN+5 waybar",
+    "on-click-right": "playerctl next; pkill -RTMIN+5 waybar",
+    "on-scroll-up": "playerctl position 10+; pkill -RTMIN+5 waybar",
+    "on-scroll-down": "playerctl position 10-; pkill -RTMIN+5 waybar",
+    "signal": 5
+  }
+}

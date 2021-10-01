@@ -6,11 +6,12 @@
   /* `otf-font-awesome` is required to be installed for icons */
   font-family: Roboto, Helvetica, Arial, sans-serif;
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 500;
+
 }
 
 window#waybar {
-  background-color: #0d1f25;
+  background-color: rgba(110, 110, 110, 0.6);
   color: #e9eef6;
   transition-property: background-color;
   transition-duration: 0.5s;
@@ -40,7 +41,6 @@ window#waybar.chromium {
 
 #workspaces button {
   border-left: 2px solid #fff;
-  padding: 0 10px;
   background-color: rgba(255, 255, 255, 0.2);
   color: #ffffff;
 }
@@ -63,6 +63,7 @@ window#waybar.chromium {
   border-bottom: 3px solid #ffffff;
 }
 
+#window,
 #clock,
 #battery,
 #cpu,
@@ -82,9 +83,11 @@ window#waybar.chromium {
 #mpd,
 #custom-pacman,
 #custom-menu,
+#language,
+#custom-clipboard,
 #workspaces button {
-  padding: 0 10px;
-  margin: 0 4px;
+  padding: 0 8px;
+  margin: 6px 3px;
   color: #ffffff;
 }
 
@@ -104,6 +107,7 @@ window#waybar.chromium {
 #window {
   font-size: 12px;
   color: #fff;
+  text-shadow: 1px 1px 1px #000;
 }
 
 /* If workspaces is the leftmost module, omit left margin */
@@ -263,10 +267,13 @@ label:focus {
   background-color: #51a37a;
 }
 
-#language {
+#language,
+#custom-clipboard {
   background-color: #ffffff;
   color: #000;
-  padding: 0 5px;
-  margin: 0 5px;
-  min-width: 20px;
+  padding: 0 4px;
+}
+
+#custom-clipboard {
+  padding: 0 8px;
 }

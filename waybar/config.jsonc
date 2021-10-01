@@ -5,7 +5,7 @@
 
   "position": "top",
   "layer": "bottom",
-  "height": 20,
+  "height": 26,
   "margin-top": 0,
   "margin-bottom": 0,
   "margin-right": 0,
@@ -16,9 +16,10 @@
     "cpu",
     "memory",
     "temperature",
-    "sway/workspaces"
+    "sway/workspaces",
+    "sway/window"
   ],
-  "modules-center": ["sway/mode", "sway/window"],
+  "modules-center": ["sway/mode"],
   "modules-right": [
     "tray",
     "bluetooth",
@@ -101,7 +102,7 @@
   },
 
   "sway/window": {
-    "max-length": 32,
+    "max-length": 40,
     "rewrite": {
       "(.*) — Mozilla Firefox": "  $1",
       "(.*) GIMP": " $0",

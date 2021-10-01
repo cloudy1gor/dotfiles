@@ -1,12 +1,14 @@
 # Arch (Manjaro Sway) linux basic comands after install
 
-- sudo -Syy
+- sudo pacman -Syyuu
 
-- sudo -Syu
+- sudo pacman -S git timeshift
 
-- sudo pacman -S git
+- sudo pacman -S lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader
 
-- pacman -S --needed git base-devel
+- sudo timedatectl set-local-rtc 1 --adjust-system-clock
+
+- sudo pacman -S --needed git base-devel
 
 - git clone https://aur.archlinux.org/yay.git
 
@@ -36,8 +38,10 @@
 
 - makepkg -si
 
-- sudo pacman -S telegram-desktop discord flameshot vlc variety
+- sudo pacman -S telegram-desktop discord flameshot vlc variety firefox-developer-edition unrar unzip transmission-qt copyq
 
 - sudo pacman -S nodejs npm yarn
 
 - sudo npm install --global typescript
+
+- sudo pacman -R firefox pcmanfm

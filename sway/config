@@ -21,12 +21,9 @@
 
   bindsym $mod+d exec $menu
   # bindsym $mod+d exec rofi -show drun -theme ~/.config/rofi/config.rasi
-# wallpaper
-  output * bg /home/clo/Изображения/5.* fill
 
-#cursor
-# seat seat0 xcursor_theme "capitaine-cursors"
-# exec_always gsettings set org.gnome.desktop.interface cursor-theme "capitaine-cursors"
+# wallpaper
+  output * bg ~/.config/sway/img/2.* fill
 
 # Folder theme
   set $theme ~/.config/sway/themes/matcha-green
@@ -58,12 +55,6 @@
   default_floating_border pixel 2
   smart_borders             on
 
-# Lock
-# exec swayidle -w \
-#         timeout 300 'swaylock -f -i ~/.config/img/background.jpg' \
-#         timeout 600 'swaymsg "output * dpms off"' \
-#         resume 'swaymsg "output * dpms on"'
-
 # Lock, Notebook
 exec swayidle -w \
   timeout 300 'swaylock -f -c 000000' \
@@ -74,7 +65,7 @@ exec swayidle -w \
 # Input
 		input * {
 	    xkb_layout us,ru
-	    xkb_options grp:alt_shift_toggle
+	    xkb_options grp:win_space_toggle
 	}
 
     input type:touchpad {
@@ -91,15 +82,6 @@ exec swayidle -w \
 
 # Popups during fullscreen mode
   popup_during_fullscreen smart
-
-# Default theme
-  # class                 border  backgr. text    indicator child_border
-  # client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
-  # client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
-  # client.unfocused        #333333 #222222 #888888 #292d2e   #222222
-  # client.urgent           #2f343a #900000 #ffffff #900000   #900000
-  # client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
-  # client.background       #ffffff
 
 # Start a terminal
   bindsym $mod+Return exec $term
@@ -161,10 +143,10 @@ exec swayidle -w \
   bindsym $mod+f fullscreen
 
   # Toggle the current focus between tiling and floating mode
-  bindsym $mod+Shift+space floating toggle
+  bindsym $mod+m floating toggle
 
   # Swap focus between the tiling area and the floating area
-  bindsym $mod+space focus mode_toggle
+  bindsym $mod+n focus mode_toggle
 
   # Move focus to the parent container
   bindsym $mod+a focus parent

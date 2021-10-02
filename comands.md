@@ -9,33 +9,33 @@
 - sudo timedatectl set-local-rtc 1 --adjust-system-clock
 
 - sudo pacman -S --needed git base-devel
-
 - git clone https://aur.archlinux.org/yay.git
-
 - cd yay
-
 - makepkg -si
 
-- sudo pacman -S kitty fish thunar ranger neofetch neovim
+- sudo pacman -S --needed base-devel git
+- git clone https://aur.archlinux.org/pikaur.git
+- cd pikaur
+- makepkg -fsri
 
+- pikaur -S nerd-fonts-noto-sans-regular-complete ttf-unifont ttf-symbola ttf-jetbrains-mono
+
+- git clone https://aur.archlinux.org/snapd.git
+- cd snapd
+- makepkg -si
+- sudo systemctl enable --now snapd.socket
+
+- sudo snap install btop
+
+- sudo pacman -S kitty fish thunar ranger neofetch neovim
 - chsh -s /usr/bin/fish
 
 - git clone https://aur.archlinux.org/visual-studio-code-bin.git
-
 - cd visual-studio-code-bin/
-
-- makepkg -si
-
-- git clone https://aur.archlinux.org/sublime-text-4.git
-
-- cd sublime-text-4/
-
 - makepkg -si
 
 - git clone https://aur.archlinux.org/google-chrome.git
-
 - cd google-chrome/
-
 - makepkg -si
 
 - sudo pacman -S telegram-desktop discord flameshot vlc variety firefox-developer-edition unrar unzip transmission-qt copyq
@@ -44,4 +44,4 @@
 
 - sudo npm install --global typescript gulp
 
-- sudo pacman -R firefox pcmanfm
+- sudo pacman -R firefox

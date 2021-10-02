@@ -1,6 +1,6 @@
 # Autostart
   exec swaymsg "workspace 1; exec firefox-developer-edition;"
-  exec swaymsg "workspace 2; exec thunar;"
+  exec swaymsg "workspace 2; exec pcmanfm;"
   exec swaymsg "workspace 3; exec telegram-desktop;"
   exec pulseaudio --kill && pulseaudio --start
 
@@ -14,7 +14,7 @@
   set $right l
 # Your preferred terminal emulator and file manager
   set $term kitty
-  set $filemanager thunar
+  set $filemanager pcmanfm
 
 # Program Launcher
   set $menu "rofi -show drun"
@@ -23,11 +23,26 @@
   # bindsym $mod+d exec rofi -show drun -theme ~/.config/rofi/config.rasi
 
 # wallpaper
-  output * bg ~/.config/sway/img/2.* fill
+  output * bg ~/.config/sway/img/1.* fill
 
-# Folder theme
-  set $theme ~/.config/sway/themes/matcha-green
-  include $theme/definitions
+# some global theme specific variables
+set $gtk-theme Matcha-light-sea
+set $icon-theme Papirus-Dark-Maia
+set $cursor-theme xcursor-breeze
+set $gui-font Roboto 14
+set $term-font RobotoMono Nerd Font 14
+set $kvantum-theme Matchama-Light
+
+
+# Basic color configuration using the Base16 variables for windows and borders.
+# Property Name             Border  BG      Text    Indicator Child Border
+	client.focused			      #000000 #000000 #000000 #000000
+	client.focused_inactive		#c3c3c3 #c3c3c3 #c3c3c3 #c3c3c3
+  client.unfocused		      #c3c3c3 #c3c3c3 #c3c3c3 #c3c3c3
+	client.urgent			        #c3c3c3 #c3c3c3 #c3c3c3 #c3c3c3
+	client.placeholder		    #c3c3c3 #c3c3c3 #c3c3c3 #c3c3c3
+
+  client.background         #2B2C2B
 
 # Font Config
 # font Adobe Source Code SemiBold 14
@@ -50,9 +65,9 @@
 
 # Borders
 # Also removes all title bars
-  for_window [class="^.*"] border pixel 2
-  default_border pixel 2
-  default_floating_border pixel 2
+  for_window [class="^.*"] border pixel 4
+  default_border pixel 4
+  default_floating_border pixel 4
   smart_borders             on
 
 # Lock, Notebook

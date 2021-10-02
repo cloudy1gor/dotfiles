@@ -40,8 +40,8 @@
 
 - sudo pacman -S telegram-desktop discord flameshot vlc variety firefox-developer-edition unrar unzip transmission-qt copyq
 
-- sudo pacman -S nodejs npm yarn
+- sudo pacman -S nodejs-lts-fermium npm yarn
 
-- sudo npm install --global typescript
+- sudo npm install --global typescript gulp
 
 - sudo pacman -R firefox pcmanfm

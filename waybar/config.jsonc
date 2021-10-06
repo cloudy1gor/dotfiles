@@ -63,7 +63,8 @@
     "interval": 60,
     "format": "神 {:%a %d %b %H:%M}",
     "tooltip": true,
-    "tooltip-format": "<big>{:%B %Y}</big>\n<tt>{calendar}</tt>",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><big>{calendar}</big></tt>",
+    "format-alt": "{:%Y-%m-%d}",
     "on-click": "swaymsg exec \\$calendar"
   },
 
@@ -120,15 +121,14 @@
     "all-outputs": false,
     "format": "{name}"
     // "format-icons": {
-    // 	"1": "",
-    // 	"2": "",
-    // 	"3": "",
-    // 	"4": "",
-    // 	"5": "",
-    // 	"6": "",
-    // 	"urgent": "",
-    // 	"focused": "",
-    // 	"default": ""
+    //   "1": "",
+    //   "2": "",
+    //   "3": "",
+    //   "4": "",
+    //   "5": "",
+    //   "urgent": "",
+    //   "focused": "",
+    //   "default": ""
     // }
   },
 

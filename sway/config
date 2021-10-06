@@ -95,6 +95,10 @@ exec swayidle -w \
 # Switch focus to pop-up window
   focus_on_window_activation smart
 
+
+# Don't focus windows hovered over by cursor
+  focus_follows_mouse no
+
 # Popups during fullscreen mode
   popup_during_fullscreen smart
 

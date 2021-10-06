@@ -1,0 +1,16 @@
+anchor=top-right
+sort=-time
+layer=overlay
+max-history=3
+background-color=#FFFFFF
+text-color=#202020E0
+width=300
+height=200
+border-size=2
+border-color=#AAAAAAA0
+border-radius=5
+icons=1
+max-icon-size=64
+default-timeout=4000
+ignore-timeout=1
+font=JetBrains Mono

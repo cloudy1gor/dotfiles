@@ -68,7 +68,7 @@ set $kvantum-theme Matchama-Light
   for_window [class="^.*"] border pixel 4
   default_border pixel 4
   default_floating_border pixel 4
-  smart_borders             on
+  smart_borders on
 
 # Lock, Notebook
 exec swayidle -w \
@@ -95,6 +95,8 @@ exec swayidle -w \
 # Switch focus to pop-up window
   focus_on_window_activation smart
 
+# Default orientation
+  default_orientation horizontal
 
 # Don't focus windows hovered over by cursor
   focus_follows_mouse no
@@ -204,11 +206,11 @@ mode --pango_markup $mode_resize {
   bindsym Return mode "default"
   bindsym Escape mode "default"
 }
-## Resize Mode
+# Resize Mode
   bindsym $mod+r mode $mode_resize
 
-#Screenshot
-  # bindsym Print exec flameshot
+# Screenshot
+  bindsym Print exec flameshot
 
 # Includes
   include ~/.config/sway/definitions

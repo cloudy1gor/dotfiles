@@ -6,13 +6,12 @@
   "position": "top",
   "layer": "bottom",
   "height": 26,
-  "margin-top": 0,
-  "margin-bottom": 0,
-  "margin-right": 0,
-  "margin-left": 0,
+  // "margin-top": 4,
+  // "margin-bottom": 0,
+  // "margin-right": 4,
+  // "margin-left": 4,
 
   "modules-left": [
-    // "custom/menu",
     "cpu",
     "memory",
     "temperature",
@@ -26,8 +25,8 @@
     "network",
     "sway/language",
     // "idle_inhibitor",
-    // "pulseaudio",
     "backlight",
+    // "pulseaudio",
     "custom/playerctl",
     "custom/sunset",
     "custom/pacman",
@@ -64,7 +63,7 @@
     "format": "神 {:%a %d %b %H:%M}",
     "tooltip": true,
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><big>{calendar}</big></tt>",
-    "format-alt": "{:%Y-%m-%d}",
+    "format-alt": "︁ {:%Y-%m-%d}",
     "on-click": "swaymsg exec \\$calendar"
   },
 
@@ -106,12 +105,15 @@
     "max-length": 40,
     "rewrite": {
       "(.*) — Mozilla Firefox": "  $1",
+      "(.*) google-chrome-stable": "  $1",
       "(.*) GIMP": " $0",
+      "(.*).zathura": "  zathura",
       "(.*)Steam": "  Steam",
       "kitty": " $0",
       "(.*).pdf": " $1.pdf",
       "(.*).epub": "龎 1.epub",
       "(.*).djvu": " $1.djvu",
+      "Transmission-qt (.*)": " Transmission",
       "(.*).mobi": "龎 $1.mobi"
     }
   },
@@ -119,17 +121,17 @@
   "sway/workspaces": {
     "disable-scroll": true,
     "all-outputs": false,
-    "format": "{name}"
-    // "format-icons": {
-    //   "1": "",
-    //   "2": "",
-    //   "3": "",
-    //   "4": "",
-    //   "5": "",
-    //   "urgent": "",
-    //   "focused": "",
-    //   "default": ""
-    // }
+    "format": "{icon}",
+    "format-icons": {
+      // "1": "",
+      // "2": "",
+      // "3": "",
+      // "4": "",
+      // "5": ""
+      // "urgent": "",
+      // "focused": "",
+      // "default": ""
+    }
   },
 
   "idle_inhibitor": {
@@ -190,12 +192,6 @@
     "signal": 4
   },
 
-  "custom/menu": {
-    "format": "",
-    "on-click": "swaymsg exec \\$menu",
-    "tooltip": false
-  },
-
   "bluetooth": {
     "format": "{icon}",
     "interval": 30,
@@ -214,19 +210,6 @@
     "on-click": "swaymsg input $(swaymsg -t get_inputs --raw | jq '[.[] | select(.type == \"keyboard\")][0] | .identifier') xkb_switch_layout next"
   },
 
-  "custom/scratchpad": {
-    "interval": "once",
-    "return-type": "json",
-    "format": "{icon}",
-    "format-icons": {
-      "one": "类",
-      "many": "缾"
-    },
-    "exec": "/bin/sh /usr/share/sway/scripts/scratchpad.sh",
-    "on-click": "swaymsg 'scratchpad show'",
-    "signal": 7
-  },
-
   "custom/sunset": {
     "interval": "once",
     "tooltip": false,
@@ -243,28 +226,6 @@
     "exec-if": "../../../../usr/share/sway/scripts/sunset.sh check",
     // "exec-if": "./modules/sunset.sh check",
     "signal": 6
-  },
-
-  "custom/wf-recorder": {
-    "interval": "once",
-    "return-type": "json",
-    "format": "{}",
-    "tooltip-format": "{tooltip}",
-    "exec": "echo '{\"class\": \"recording\",\"text\":\"雷\",\"tooltip\":\"press $mod+Esc to stop recording\"}'",
-    "exec-if": "pgrep wf-recorder",
-    "on-click": "killall -s SIGINT wf-recorder",
-    "signal": 8
-  },
-
-  "custom/github": {
-    "interval": 300,
-    "tooltip": false,
-    "return-type": "json",
-    "format": " {}",
-    "exec": "gh api '/notifications' -q '{ text: length }' | cat -",
-    "exec-if": "command -v gh >/dev/null && gh auth status 2>&1 | grep -q -m 1 'Logged in' && gh api '/notifications' -q 'length' | grep -q -m 1 '0' ; test $? -eq 1",
-    "on-click": "xdg-open https://github.com/notifications && sleep 30 && pkill -RTMIN+4 waybar",
-    "signal": 4
   },
 
   "custom/playerctl": {

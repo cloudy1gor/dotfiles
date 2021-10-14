@@ -1,2 +1,4 @@
 # dotfiles
-My dotfiles for arch (sway wayland rofi kitty fish nvim)
+My dotfiles for arch (sway waybar rofi kitty fish nvim)
+
+![](/screen.png)

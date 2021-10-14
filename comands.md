@@ -15,7 +15,7 @@
 
 - sudo pacman -S --needed base-devel git
 - git clone https://aur.archlinux.org/pikaur.git
-- cd pikaur
+- cd pikaur4
 - makepkg -fsri
 
 - pikaur -S nerd-fonts-noto-sans-regular-complete ttf-unifont ttf-symbola ttf-jetbrains-mono

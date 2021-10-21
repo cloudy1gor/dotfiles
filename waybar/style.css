@@ -14,7 +14,7 @@ window#waybar {
   background-image: radial-gradient(
     circle 590px at 12.2% 13.8%,
     rgba(40, 64, 100, 0.5) 0%,
-    rgba(184, 184, 184, 0.9) 90%
+    rgba(184, 184, 184, 0.7) 90%
   );
 
   color: #e9eef6;
